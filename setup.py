@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 
-"""b64img package installer.
+"""base64image package installer.
 
 """
 
 import sys
 from setuptools import setup
 
-exec(open('b64img/__init__.py').read())
-setup(name='b64img',
-      packages=['b64img'],
+exec(open('base64image/__init__.py').read())
+setup(name='base64image',
+      packages=['base64image'],
       version=__version__,
       description='Base64 Image Handler for Data URIs',
       setup_requires=['setuptools-markdown'],
