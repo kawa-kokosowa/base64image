@@ -120,8 +120,3 @@ class Base64Image(object):
 
     def get_pil_image(self):
         return Image.open(BytesIO(self.image_string))
-
-
-image = Base64Image.from_uri("http://simpleicon.com/wp-content/uploads/smile.png")
-print(image)
-image.to_file("lol.png")
