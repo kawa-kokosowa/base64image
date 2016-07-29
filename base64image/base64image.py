@@ -91,7 +91,26 @@ class Base64Image(object):
 
     @classmethod
     def from_base64_image_string(cls, base64_image_string):
-        return cls(base64.b64decode(base64_image_string))
+        """Useful for both create a Base64Image from a base64
+        image string AND validating that a provided string is
+        indeed a a true base64 image (or ValueError is raised).
+
+        Arguments:
+            base64_image_string: This string will be checked
+                if it is a valid image once decoded from b64.
+
+        Raises:
+            ValueError: If provided string is not a
+                proper base64 encoded image string.
+
+        Returns:
+            Base64Image
+
+        """
+
+        image_string = base64.b64decode(base64_image_string)
+        self._detect_image_format(image_string)
+        return cls(image_string)
 
     @classmethod
     def from_file(cls, file_path):
