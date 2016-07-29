@@ -35,6 +35,10 @@ class Base64Image(object):
             image_string (str): Generally the result of
                 .read()'ing something in binary mode.
 
+        Raises:
+            ValueError: from self._detect_image_format() if
+                the provided image_string is not a valid image.
+
         """
 
         self.image_string = image_string
@@ -55,7 +59,7 @@ class Base64Image(object):
 
     @staticmethod
     def _detect_image_format(image_string):
-        """
+        """Determine image format.
 
         Arguments:
             image_string (str): A non-encoded read()
@@ -68,6 +72,8 @@ class Base64Image(object):
             NotImplementedError: If the type detected
                 is not supported/in the ImageFormats
                 enumeration.
+            ValueError: If image_string is not a valid
+                image.
 
         Note:
             Instead of directly returning the result,
@@ -109,7 +115,6 @@ class Base64Image(object):
         """
 
         image_string = base64.b64decode(base64_image_string)
-        self._detect_image_format(image_string)
         return cls(image_string)
 
     @classmethod
