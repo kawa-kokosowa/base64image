@@ -8,7 +8,7 @@ Base64-encoded images for HTML data URIs.
 
 ## Examples
 
-```
+```python
 from base64image import Base64Image
 b64_image = Base64Image.from_file("wowo.png")
 image_element = '<img src="%s">' % base64_image
