@@ -27,4 +27,4 @@ except ValueError:
     print("lol that string isn't an image encoded in base64...")
 else:
     pil_image = base64_image.get_pil_image()
-``
+```
