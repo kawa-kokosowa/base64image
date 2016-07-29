@@ -39,7 +39,7 @@ class Base64Image(object):
 
         self.image_string = image_string
         self.base64_image_string = base64.b64encode(image_string)
-        self.image_format = self.detect_image_format(image_string)
+        self.image_format = self._detect_image_format(image_string)
 
     def __str__(self):
         """Just what you need for img src.
@@ -54,7 +54,7 @@ class Base64Image(object):
         return data_uri
 
     @staticmethod
-    def detect_image_format(image_string):
+    def _detect_image_format(image_string):
         """
 
         Arguments:
@@ -88,6 +88,10 @@ class Base64Image(object):
             raise ValueError("Invalid image provided.")
 
         return image_format
+
+    @classmethod
+    def from_base64_image_string(cls, base64_image_string):
+        return cls(base64.b64decode(base64_image_string))
 
     @classmethod
     def from_file(cls, file_path):
